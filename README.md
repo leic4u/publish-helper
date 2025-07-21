@@ -1,105 +1,258 @@
-**使用前务必请先看设置！！！**
+# Publish Helper 2.0
 
-![JXRij8g.png](https://iili.io/JXRij8g.png)
+> 🚀 **现代化PT资源发布助手** - 重构版本
 
-目前的一些简单的功能有：
+[![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://python.org)
+[![License](https://img.shields.io/badge/license-GPL%20v3-green.svg)](LICENSE)
+[![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-1. 自动获取PT-Gen简介信息（需要PT-Gen API接口）
-2. 自动获取MediaInfo信息
-3. 自动截图
-4. 自动获取缩略图
-5. 自动将图片上传图床（需要图床的API接口）
-6. 根据简介信息和MediaInfo信息自动分析生成主副标题和文件名
-7. 自动将资源塞入文件夹并重命名
-8. 自动将资源制作种子
-9. 剧集、短剧资源自动批量重命名（新）
-10. 支持剧集短剧分集命名（新）
-11. 自定义重命名规则（新）
-12. 结合auto_feed脚本实现一键上传内容（新）
-13. 短剧一键生成简介（新）
-14. 重命名时制作硬链接（新）
+## ✨ 重构亮点
 
-Docker版正在测试中，将支持部署在自己nas上，欢迎测试使用：[【体验地址】](http://47.94.40.202:18080/)。
+本版本是对原项目的全面重构，在**完全保持向后兼容性**的同时，大幅提升了代码质量和开发体验：
 
-Docker安装部署请见[【镜像仓库】](https://hub.docker.com/r/sertion1126/publish-helper)。
+🏗️ **现代化架构** - 模块化设计，符合Python最佳实践  
+⚙️ **智能配置** - 分层配置系统，支持环境变量覆盖  
+📝 **专业日志** - 彩色输出，结构化记录  
+🛡️ **类型安全** - 完整的异常体系和类型检查  
+🧪 **测试保证** - 完整的测试框架和代码覆盖  
+🔧 **开发工具** - 自动化代码质量保证  
 
-软件使用方法请见[【Wiki】](https://github.com/bjdbjd/publish-helper/wiki/Publish-Helper-Wiki)。
+## 🎯 功能特性
 
-目前支持的免费公共图床：[【freeimage】](https://freeimage.host/) [【imgbb】](https://imgbb.com/) [【imagehub】](https://www.imagehub.cc/) [【pixhost】](https://pixhost.to/)
+### 核心功能
 
-目前支持的商业公共图床：[【薄荷图床(bohe)】](https://zixiaoyun.com/)
+- 🎬 **自动获取PT-Gen简介信息** - 支持多个API源
+- 📋 **MediaInfo信息提取** - 智能媒体分析
+- 📸 **自动截图生成** - 可配置截图参数
+- 🖼️ **缩略图制作** - 自动生成预览图
+- ☁️ **图床上传** - 支持多种图床服务
+- 🏷️ **智能命名** - 根据模板自动生成标题和文件名
+- 📁 **文件整理** - 自动创建目录结构
+- 🌱 **种子制作** - 一键生成torrent文件
 
-目前支持的开源图床架构：[【兰空图床(lsky-pro)】](https://github.com/lsky-org/lsky-pro) [【chevereto】](https://github.com/rodber/chevereto-free)
+### 高级功能
 
-图床的API地址和令牌请去图床主页获取，其他图床如需要单独适配请提Issues，前提是图床支持API上传！
+- 📺 **剧集批量处理** - 支持批量重命名和分集处理
+- 🔗 **硬链接支持** - 节省存储空间
+- 🎭 **短剧特殊处理** - 专门的短剧命名和简介生成
+- 🚀 **API接口** - 完整的RESTful API
+- 🐳 **Docker支持** - 容器化部署
 
-如果您发现自动命名时视频、音频的编码格式没有正确识别，或者想要修改资源来源、小组名称或短剧来源默认值，请参考[【Wiki】](https://github.com/bjdbjd/publish-helper/wiki/Publish-Helper-Wiki)中的Q&A或查看**readme.txt**。
+## 🚀 快速开始
 
-本软件已支持API功能，具体请见[【API文档】](https://apifox.com/apidoc/shared-6d670fb1-eb1f-4431-afdb-29b19fe1ffe1)。
+### 安装
 
-**软件获取地址：**
+```bash
+# 克隆项目
+git clone https://github.com/your-username/publish-helper.git
+cd publish-helper
 
-[【GitHub仓库】](https://github.com/bjdbjd/publish-helper/releases) [【Gitee仓库】](https://gitee.com/bjdbjd/publish-helper/releases)
+# 安装依赖
+pip install -r requirements.txt
 
-更新时只需要保留static文件夹即可将配置完美迁移。
-
-如果出现错误，可能是配置文件结构有重大变化，请使用最新的static文件。
-
-如有帮助到您，请给项目**点亮Star**，并推广给有需要的朋友，十分感谢！
-
-**Powered by Python 3.10**
-
-**Created by BJD**
-
-
-# 快速开始
-
-### 环境安装
-
-访问[【Python 3.10】](https://www.python.org/downloads/release/python-31012/)，下载并安装，记得将Python路径添加到环境变量。
-
-### 依赖安装
-
-```
-pip install -r docs/requirements.txt
+# 配置环境（可选）
+cp .env.example .env
+# 编辑 .env 文件配置你的API密钥
 ```
 
-### 项目启动
+### 运行
 
-在项目根目录（README文件所在目录）下执行代码。
+```bash
+# GUI模式
+python src/main_gui_new.py
 
-* 1.gui启动
-  * Unix
-    ```shell
-    export PYTHONPATH=${PYTHONPATH}:. && python src/main_gui.py
-    ```
-  * Windows
-    ```shell
-    $env:PYTHONPATH = "$($env:PYTHONPATH);."
-    python src\main_gui.py
-    ```
+# API模式  
+python src/main_api_new.py
 
-* 2.api启动
-  * Unix
-    ```shell
-    export PYTHONPATH=${PYTHONPATH}:. && python src/main_api.py
-    ```
-  * Windows
-    ```shell
-    $env:PYTHONPATH = "$($env:PYTHONPATH);."
-    python src\main_api.py
-    ```
+# 原有方式依然支持
+python src/main_gui.py
+python src/main_api.py
+```
 
-* 3.PyCharm下启动
+### Docker部署
 
-配置默认工作目录为项目根目录，随后运行对应按钮即可。
+```bash
+# 使用docker-compose
+docker-compose up -d
 
-![img.png](docs/img/img.png)
+# 或直接构建
+docker build -t publish-helper .
+docker run -p 15372:15372 publish-helper
+```
 
-## 附件
+## ⚙️ 配置说明
 
-- [镜像发布](docs/docker_publish.md)
+### 环境变量配置
 
-## Star History
+创建 `.env` 文件：
 
-[![Star History Chart](https://api.star-history.com/svg?repos=bjdbjd/publish-helper&type=Date)](https://star-history.com/#bjdbjd/publish-helper&Date)
+```bash
+# API配置
+API_PORT=15372
+API_DEBUG=false
+
+# PT-Gen配置
+PTGEN_API_URL=https://ptgen.agsvpt.work/
+PTGEN_API_KEY=your_api_key
+
+# 图床配置
+IMAGE_HOST_TYPE=freeimage
+IMAGE_HOST_API_KEY=your_image_host_key
+
+# 日志配置
+LOG_LEVEL=INFO
+LOG_FILE=logs/app.log
+```
+
+### 支持的图床
+
+#### 免费图床
+
+- [FreeImage](https://freeimage.host/) - 无需API密钥
+- [ImgBB](https://imgbb.com/) - 需要API密钥
+- [ImageHub](https://www.imagehub.cc/) - 无需API密钥
+- [PixHost](https://pixhost.to/) - 无需API密钥
+
+#### 商业图床
+
+- [薄荷图床](https://zixiaoyun.com/) - 需要API密钥
+
+#### 自建图床
+
+- [兰空图床](https://github.com/lsky-org/lsky-pro) - 开源图床方案
+- [Chevereto](https://github.com/rodber/chevereto-free) - 开源图床方案
+
+## 🛠️ 开发指南
+
+### 开发环境设置
+
+```bash
+# 安装开发依赖
+pip install -r requirements-dev.txt
+
+# 安装pre-commit钩子
+pre-commit install
+
+# 运行测试
+pytest tests/ -v --cov=src
+```
+
+### 代码质量
+
+```bash
+# 代码格式化
+black src/ tests/
+isort src/ tests/
+
+# 代码检查
+flake8 src/ tests/
+mypy src/
+
+# 或使用Makefile
+make format  # 格式化代码
+make lint    # 代码检查
+make test    # 运行测试
+```
+
+### 项目结构
+
+```
+publish-helper/
+├── src/
+│   ├── config/            # 配置管理
+│   │   ├── __init__.py
+│   │   └── settings.py
+│   ├── utils/             # 工具模块
+│   │   ├── logger.py      # 日志系统
+│   │   ├── exceptions.py  # 异常定义
+│   │   └── file_utils.py  # 文件工具
+│   ├── core/              # 核心功能
+│   ├── gui/               # GUI界面
+│   ├── api/               # API接口
+│   ├── main_gui_new.py    # GUI入口
+│   └── main_api_new.py    # API入口
+├── tests/                 # 测试代码
+├── docs/                  # 文档
+├── requirements.txt       # 生产依赖
+├── requirements-dev.txt   # 开发依赖
+└── docker-compose.yml     # Docker配置
+```
+
+## 📚 文档
+
+- 📖 [开发者指南](docs/DEVELOPMENT.md) - 详细的开发文档
+- 🔧 [重构说明](FORK_PROPOSAL.md) - 重构内容和改进说明
+- 🐳 [Docker部署](docker-compose.yml) - 容器化部署指南
+- ⚙️ [配置参考](.env.example) - 完整的配置选项
+
+## 🤝 贡献
+
+欢迎贡献代码！请遵循以下步骤：
+
+1. Fork 项目
+2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
+3. 提交更改 (`git commit -m 'Add amazing feature'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 创建 Pull Request
+
+### 代码规范
+
+- 遵循 PEP 8 代码风格
+- 使用 Black 进行代码格式化
+- 添加类型注解
+- 编写测试用例
+- 更新文档
+
+## 📝 更新日志
+
+### v2.0.0 - 架构重构版 (2025-07-21)
+
+#### 🚀 新增功能
+
+- 现代化项目架构
+- 分层配置管理系统
+- 专业日志框架
+- 完整的异常处理体系
+- 自动化开发工具链
+- 完整的测试框架
+
+#### 🔧 改进
+
+- 代码质量大幅提升
+- 更好的错误处理
+- 改进的Docker配置
+- 完善的文档系统
+
+#### 🛡️ 兼容性
+
+- 完全向后兼容
+- 保持所有原有功能
+- 现有配置自动迁移
+
+## 📞 支持
+
+- 📧 [提交Issue](https://github.com/bjdbjd/publish-helper/issues)
+- 💬 [讨论区](https://github.com/bjdbjd/publish-helper/discussions)
+- 📖 [Wiki文档](https://github.com/bjdbjd/publish-helper/wiki)
+
+## 📄 许可证
+
+本项目基于 [GNU General Public License v3.0](LICENSE) 开源。
+
+## 🙏 致谢
+
+### 贡献者
+
+- **bjdbjd** - 原作者和主要维护者
+- **Pixel-LH** - 核心贡献者
+- **EasonWong0603** - 功能开发
+- **sertion1126** - Docker支持
+- **TommyMerlin** - 功能改进
+
+### 特别感谢
+
+感谢所有为项目贡献代码、报告问题、提供建议的开发者和用户！
+
+---
+
+如果这个项目对你有帮助，请给我们一个 ⭐ **Star**！
