@@ -4,54 +4,143 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "publish-helper"
-version = "1.4.5"
-description = "publish-helper"
-requires-python = ">=3.9, <3.12"
+version = "2.0.0"
+description = "A comprehensive PT (Private Tracker) resource publishing assistant with modern Python architecture"
+readme = "README_NEW.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "bjdbjd", email = ""},
+]
+contributors = [
+    {name = "Pixel-LH"},
+    {name = "EasonWong0603"},
+    {name = "sertion1126"},
+    {name = "TommyMerlin"},
+]
+requires-python = ">=3.9"
 dependencies = [
+    "Flask>=3.0.2",
+    "flask-cors>=3.0.10",
+    "PyQt6>=6.6.1",
+    "requests>=2.31.0",
+    "pillow>=10.3.0",
+    "numpy>=1.26.4",
+    "opencv-python>=4.9.0.80",
+    "pymediainfo>=6.1.0",
+    "torf>=4.2.6",
+    "pyperclip>=1.8.2",
+    "python-dotenv>=1.0.1",
+    "xpinyin>=0.7.6",
+    "click>=8.1.7",
+    "colorama>=0.4.6",
+]
+keywords = ["pt", "torrent", "media", "publishing", "automation"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia",
+    "Topic :: Internet",
+]
+
+[project.urls]
+Homepage = "https://github.com/bjdbjd/publish-helper"
+Repository = "https://github.com/bjdbjd/publish-helper.git"
+Issues = "https://github.com/bjdbjd/publish-helper/issues"
+Documentation = "https://github.com/bjdbjd/publish-helper/wiki"
+
+[project.scripts]
+publish-helper-gui = "src.main_gui_new:main"
+publish-helper-api = "src.main_api_new:main"
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.12.0",
+    "isort>=5.13.1",
+    "flake8>=5.0.4",
+    "mypy>=1.8.0",
+    "pre-commit>=3.6.0",
+    "pytest>=7.4.3",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    "coverage>=7.2.7",
+]
+docs = [
+    "sphinx>=7.2.6",
+    "sphinx-rtd-theme>=2.0.0",
+]
+security = [
+    "bandit>=1.7.5",
+    "safety>=3.0.0",
 ]
 
 [tool.flit.module]
 name = "src"
 
-[project.optional-dependencies]
-lint = [
-    "flake8==5.0.4",
-    "pyproject-flake8==5.0.4",
-    "pre-commit==3.6.0",
-    "isort==5.13.1",
-    "black==23.12.0"
-]
-test = [
-    "httpx==0.24.1",
-    "pytest==7.4.3",
-    "coverage==7.2.7",
-    "pytest-cov==4.1.0",
-    "chromadb==0.4.24"
-]
-package = [
-    "flit==3.9.0"
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  \.eggs
+  | \.git
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88
+known_first_party = ["src"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers --cov=src --cov-report=term-missing"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["*/tests/*", "*/test_*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
 ]
 
 [tool.flake8]
-max-line-length = 300
-ignore = ['E203', 'E231', 'E241', 'W291', 'W293', 'W503', 'E501']
-per-file-ignores = [
-    '__init__.py:F401',
-]
-count = true
-
-[tool.coverage.report]
-exclude_also = [
-    "def __repr__",
-    "if self.debug:",
-    "if settings.DEBUG",
-    "raise AssertionError",
-    "raise NotImplementedError",
-    "if 0:",
-    "if __name__ == .__main__.:",
-    "if TYPE_CHECKING:",
-    "class .*\\bProtocol\\):",
-    "@(abc\\.)?abstractmethod",
-    "except Exception as e:",
-]
-omit = ["src/main.py", "src/chat.py"]
+max-line-length = 88
+ignore = ["E203", "W503"]
+per-file-ignores = ["__init__.py:F401"]
