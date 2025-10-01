@@ -34,6 +34,9 @@ jobs:
       id-token: write
 
     steps:
+      - name: Build dist directory
+        run: make build
+        
       - name: Checkout repository
         uses: actions/checkout@v4
 
