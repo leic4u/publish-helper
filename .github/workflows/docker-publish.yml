@@ -35,8 +35,8 @@ jobs:
 
     steps:
       - name: Build dist directory
-        run: make build
-        
+        run: python -m build
+      
       - name: Checkout repository
         uses: actions/checkout@v4
 
