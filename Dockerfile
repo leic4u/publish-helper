@@ -10,7 +10,6 @@ COPY static static
 COPY temp temp
 COPY docs/requirements_api.txt requirements_api.txt
 RUN mkdir media  \
-    && cp -r lib_deb/sources.list /etc/apt/sources.list \
     && apt-get update -o Acquire::Check-Valid-Until=false  \
     && apt-get install -y libmediainfo0v5 libzen0v5 nginx gettext-base  \
     && cp -r lib_deb/entrypoint entrypoint \
