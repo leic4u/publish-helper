@@ -5,5 +5,5 @@ envsubst '${NGINX_PORT}${API_PORT}' < /etc/nginx/nginx.template.conf > /etc/ngin
 # 启动前端nginx服务
 nginx
 # 启动后端服务
-export PYTHONPATH=${PYTHONPATH}:. && python src/main.py
+export PYTHONPATH=${PYTHONPATH}:. && python src/main_api_new.py
 
