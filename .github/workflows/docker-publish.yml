@@ -38,6 +38,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 拉取前端仓库到 publish-helper-vue 目录
+      - name: Checkout frontend
+        uses: actions/checkout@v4
+        with:
+          repository: leic4u/publish-helper-vue
+          path: publish-helper-vue
+
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
